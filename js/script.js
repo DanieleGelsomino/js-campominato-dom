@@ -7,7 +7,7 @@ function startGame(totCells, levels) {
   const positionBomb = bombGenerator(totCells);
   console.log(positionBomb);
   createElementsInGrid(totCells, levels);
-
+  let click = 0;
   for (let i = 1; i <= totCells; i++) {
     const cell = document.getElementById("cell-" + i);
     // aggiungo evento al click
@@ -17,10 +17,24 @@ function startGame(totCells, levels) {
       // e la cella si colorerà di rosso, altrimenti di blu.
       const bombDetected = positionBomb.includes(i);
       if (bombDetected) {
+        let punteggio = 100 / (totCells - 16);
+        let playerPunteggio = (punteggio * click).toFixed(2);
+        console.log(playerPunteggio);
+        punteggioUser.innerHTML = `<h3>il tuo record : ${playerPunteggio}</h3>`;
         cell.classList.add("bg-red");
         gameOver.classList.remove("d-none");
         gameOverText.classList.remove("d-none");
       } else {
+        click += 1;
+        console.log(click);
+        let punteggio = 100 / (totCells - 16);
+        let playerPunteggio = (punteggio * click).toFixed(2);
+        if (playerPunteggio > 99) {
+          winnerGame.classList.remove("d-none");
+          winnerText.classList.remove("d-none");
+        }
+        console.log(playerPunteggio);
+        punteggioUser.innerHTML = `<h3>il tuo record : ${playerPunteggio}</h3>`;
         cell.classList.add("bg-skyblue");
       }
     });
@@ -80,6 +94,12 @@ const buttonHard = document.getElementById("hard");
 const gameOver = document.getElementById("game-over");
 
 const gameOverText = document.getElementById("game-over-text");
+
+const winnerGame = document.getElementById("winner");
+
+const winnerText = document.getElementById("winner-text");
+
+const punteggioUser = document.getElementById("punteggio");
 
 // aggiungo eventi ai button
 

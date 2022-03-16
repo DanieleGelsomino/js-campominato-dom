@@ -21,8 +21,8 @@ h2 {
 /* content */
 
 .container {
-  background-color: rgb(176, 176, 176);
   height: 100vh;
+  background-color: rgb(176, 176, 176);
   position: relative;
 }
 
@@ -80,11 +80,12 @@ h2 {
   display: none;
 }
 
-#game-over {
-  height: 500px;
-  width: 500px;
+#game-over,
+#winner {
+  height: 510px;
+  width: 510px;
   border-radius: 5px;
-  margin-top: 93px;
+  margin-top: 68px;
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
   top: 50%;
@@ -93,10 +94,29 @@ h2 {
 }
 
 #game-over-text {
+  width: 510px;
+  height: 510px;
+  font-size: 2.5rem;
+  color: rgb(255, 66, 66);
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#punteggio {
+  color: red;
+  font-size: 1.2rem;
+  text-align: center;
+  padding-bottom: 20px;
+  text-transform: uppercase;
+}
+
+#winner-text {
+  color: green;
   width: 500px;
   height: 500px;
-  font-size: 2rem;
-  color: rgb(255, 66, 66);
+  font-size: 2.5rem;
   display: flex;
   text-align: center;
   justify-content: center;
