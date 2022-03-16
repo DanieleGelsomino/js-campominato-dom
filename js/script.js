@@ -20,7 +20,7 @@ function startGame(totCells, levels) {
         let punteggio = 100 / (totCells - 16);
         let playerPunteggio = (punteggio * click).toFixed(2);
         console.log(playerPunteggio);
-        punteggioUser.innerHTML = `<h3>il tuo record : ${playerPunteggio}</h3>`;
+        punteggioUser.innerHTML = `<h3>il tuo record : ${playerPunteggio} pt</h3>`;
         cell.classList.add("bg-red");
         gameOver.classList.remove("d-none");
         gameOverText.classList.remove("d-none");
@@ -34,7 +34,7 @@ function startGame(totCells, levels) {
           winnerText.classList.remove("d-none");
         }
         console.log(playerPunteggio);
-        punteggioUser.innerHTML = `<h3>il tuo record : ${playerPunteggio}</h3>`;
+        punteggioUser.innerHTML = `<h3>il tuo record : ${playerPunteggio} pt</h3>`;
         cell.classList.add("bg-skyblue");
       }
     });
