@@ -1,21 +1,30 @@
 // console check
 console.log("JS OK!");
 
-// preparazione all'esecuzione del programma
+//************* FUNZIONI ************
 
-const buttonEasy = document.getElementById("easy");
+function startGame(totCells, levels) {
+  const positionBomb = bombGenerator(totCells);
+  console.log(positionBomb);
+  createElementsInGrid(totCells, levels);
+}
 
-const buttonMedium = document.getElementById("medium");
+function bombGenerator(max) {
+  const bombList = [];
+  while (bombList.length < 16) {
+    const bombNumbers = generaNumeroRandom(1, max);
+    if (!bombList.includes(bombNumbers)) {
+      bombList.push(bombNumbers);
+    }
+  }
+  return bombList;
+}
 
-const buttonHard = document.getElementById("hard");
-
-buttonEasy.addEventListener("click", () => createElementsInGrid(100, "easy"));
-
-buttonMedium.addEventListener("click", () =>
-  createElementsInGrid(81, "medium")
-);
-
-buttonHard.addEventListener("click", () => createElementsInGrid(49, "hard"));
+function generaNumeroRandom(min, max) {
+  const range = max - min + 1;
+  const numGenerated = Math.floor(Math.random() * range) + min;
+  return numGenerated;
+}
 
 function createElementsInGrid(totalCells, levelClass) {
   // recupero la griglia con l'id
@@ -35,11 +44,23 @@ function createElementsInGrid(totalCells, levelClass) {
     cell.innerText = i + 1;
     // aggiungo l'elemento creato alla griglia
     grid.appendChild(cell);
-
-    // aggiungo un listener sul click dell'elemento
-    // se non ha già lo sfondo azzurro lo metto
-    // se è già azzuro tolgo il colore dallo sfondo
-
-    cell.addEventListener("click", () => cell.classList.toggle("bg-skyblue"));
   }
 }
+
+//************* / FUNZIONI ************
+
+// preparazione all'esecuzione del programma
+
+const buttonEasy = document.getElementById("easy");
+
+const buttonMedium = document.getElementById("medium");
+
+const buttonHard = document.getElementById("hard");
+
+// aggiungo eventi ai button
+
+buttonEasy.addEventListener("click", () => startGame(100, "easy"));
+
+buttonMedium.addEventListener("click", () => startGame(81, "medium"));
+
+buttonHard.addEventListener("click", () => startGame(49, "hard"));
