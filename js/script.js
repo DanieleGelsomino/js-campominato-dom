@@ -13,6 +13,7 @@ function bombGenerator(max) {
   const bombList = [];
   while (bombList.length < 16) {
     const bombNumbers = generaNumeroRandom(1, max);
+    //I numeri nella lista delle bombe non possono essere duplicati.
     if (!bombList.includes(bombNumbers)) {
       bombList.push(bombNumbers);
     }
@@ -36,6 +37,7 @@ function createElementsInGrid(totalCells, levelClass) {
   for (let i = 0; i < totalCells; i++) {
     // creo l'elemento
     const cell = document.createElement("div");
+    cell.id = "cell-" + (i + i);
     // aggiungo eventuali classi css per dargli uno stile
     // cell.classList.add('cell');
     cell.className = "cell";
