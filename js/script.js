@@ -7,6 +7,22 @@ function startGame(totCells, levels) {
   const positionBomb = bombGenerator(totCells);
   console.log(positionBomb);
   createElementsInGrid(totCells, levels);
+
+  for (let i = 1; i <= totCells; i++) {
+    const cell = document.getElementById("cell-" + i);
+    // aggiungo evento al click
+    cell.addEventListener("click", () => {
+      console.log(i);
+      // se il numero è presente nella lista abbiamo calpestato una bomba
+      // e la cella si colorerà di rosso, altrimenti di blu.
+      const bombDetected = positionBomb.includes(i);
+      if (bombDetected) {
+        cell.classList.add("bg-red");
+      } else {
+        cell.classList.add("bg-skyblue");
+      }
+    });
+  }
 }
 
 function bombGenerator(max) {
@@ -14,7 +30,7 @@ function bombGenerator(max) {
   while (bombList.length < 16) {
     const bombNumbers = generaNumeroRandom(1, max);
     //I numeri nella lista delle bombe non possono essere duplicati.
-    if (!bombList.includes(bombNumbers)) {
+    if (bombList.includes(bombNumbers) == false) {
       bombList.push(bombNumbers);
     }
   }
@@ -37,7 +53,7 @@ function createElementsInGrid(totalCells, levelClass) {
   for (let i = 0; i < totalCells; i++) {
     // creo l'elemento
     const cell = document.createElement("div");
-    cell.id = "cell-" + (i + i);
+    cell.id = "cell-" + (i + 1);
     // aggiungo eventuali classi css per dargli uno stile
     // cell.classList.add('cell');
     cell.className = "cell";
