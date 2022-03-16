@@ -7,7 +7,13 @@
 }
 
 body {
-  font-family: "Press Start 2P", cursive;
+  font-family: "Montserrat", sans-serif;
+}
+
+h1,
+h2 {
+  font-family: "Press Start 2P", sans-serif;
+  color: rgb(63, 62, 62);
 }
 
 /* utilities */
@@ -15,8 +21,9 @@ body {
 /* content */
 
 .container {
-  background-color: rgb(64, 64, 255);
+  background-color: rgb(176, 176, 176);
   height: 100vh;
+  position: relative;
 }
 
 img {
@@ -28,6 +35,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
 }
 
 .levels {
@@ -36,14 +44,27 @@ img {
 
 button {
   border-radius: 20px;
-  border: 2px solid black;
-  background-color: rgb(248, 248, 64);
-  padding: 3px 7px;
-  color: blue;
+  margin: 10px 5px;
+  font-size: 0.9rem;
+  border: transparent;
+  background-color: rgb(69, 127, 159);
+  padding: 8px 14px;
+  color: rgb(0, 0, 0);
+}
+
+button:hover {
+  cursor: pointer;
+  outline: 2px solid rgb(69, 127, 159);
+  outline-offset: 2px;
+  color: lightgray;
 }
 
 h2 {
-  font-size: 16px;
+  line-height: 25px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.8rem;
   margin-bottom: 20px;
 }
 
@@ -55,14 +76,46 @@ h2 {
   flex-wrap: wrap;
 }
 
+.d-none {
+  display: none;
+}
+
+#game-over {
+  height: 500px;
+  width: 500px;
+  border-radius: 5px;
+  margin-top: 93px;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#game-over-text {
+  width: 500px;
+  height: 500px;
+  font-size: 2rem;
+  color: rgb(255, 66, 66);
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
 .cell {
   background-color: lightgray;
-  border: 2px solid rgb(64, 64, 255);
+  border: 2px solid rgb(176, 176, 176);
   font-size: 12px;
   border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.cell:hover {
+  cursor: pointer;
+  background-color: gray;
 }
 
 .bg-skyblue {

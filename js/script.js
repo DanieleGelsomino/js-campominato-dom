@@ -18,6 +18,8 @@ function startGame(totCells, levels) {
       const bombDetected = positionBomb.includes(i);
       if (bombDetected) {
         cell.classList.add("bg-red");
+        gameOver.classList.remove("d-none");
+        gameOverText.classList.remove("d-none");
       } else {
         cell.classList.add("bg-skyblue");
       }
@@ -75,6 +77,10 @@ const buttonMedium = document.getElementById("medium");
 
 const buttonHard = document.getElementById("hard");
 
+const gameOver = document.getElementById("game-over");
+
+const gameOverText = document.getElementById("game-over-text");
+
 // aggiungo eventi ai button
 
 buttonEasy.addEventListener("click", () => startGame(100, "easy"));
@@ -82,3 +88,5 @@ buttonEasy.addEventListener("click", () => startGame(100, "easy"));
 buttonMedium.addEventListener("click", () => startGame(81, "medium"));
 
 buttonHard.addEventListener("click", () => startGame(49, "hard"));
+
+// creo schermata game over
