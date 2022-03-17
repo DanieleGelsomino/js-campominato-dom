@@ -7,6 +7,10 @@ function startGame(totCells, levels) {
   const positionBomb = bombGenerator(totCells);
   console.log(positionBomb);
   createElementsInGrid(totCells, levels);
+  addToClickCells(positionBomb, totCells);
+}
+
+function addToClickCells(positionBomb, totCells) {
   let click = 0;
   for (let i = 1; i <= totCells; i++) {
     const cell = document.getElementById("cell-" + i);
@@ -17,12 +21,18 @@ function startGame(totCells, levels) {
       // e la cella si colorerà di rosso, altrimenti di blu.
       const bombDetected = positionBomb.includes(i);
       if (bombDetected) {
-        cell.classList.add("bg-red");
+        const bombs = document.querySelectorAll(".cell");
+        for (let i = 0; i < bombs.length; i++) {
+          if (positionBomb.includes(i + 1)) {
+            const bombCell = bombs[i];
+            bombCell.classList.add("bg-red");
+          }
+        }
         gameOver.classList.remove("d-none");
         gameOverText.classList.remove("d-none");
       } else {
         click += 1;
-        let punteggio = 100 / (totCells - 16);
+        let punteggio = 100 / (totCells - bombs);
         let playerPunteggio = (punteggio * click).toFixed(2);
         cell.classList.add("clicked");
         if (playerPunteggio > 99) {
@@ -38,7 +48,7 @@ function startGame(totCells, levels) {
 
 function bombGenerator(max) {
   const bombList = [];
-  while (bombList.length < 16) {
+  while (bombList.length < bombs) {
     const bombNumbers = generaNumeroRandom(1, max);
     //I numeri nella lista delle bombe non possono essere duplicati.
     if (bombList.includes(bombNumbers) == false) {
@@ -79,7 +89,7 @@ function createElementsInGrid(totalCells, levelClass) {
 
 //************* / FUNZIONI ************
 
-// preparazione all'esecuzione del programma
+// variabili dichiarate
 
 const bombs = 16;
 
