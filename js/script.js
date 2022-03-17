@@ -16,7 +16,6 @@ function addToClickCells(positionBomb, totCells) {
     const cell = document.getElementById("cell-" + i);
     // aggiungo evento al click
     cell.addEventListener("click", () => {
-      console.log(i);
       // se il numero è presente nella lista abbiamo calpestato una bomba
       // e la cella si colorerà di rosso, altrimenti di blu.
       const bombDetected = positionBomb.includes(i);

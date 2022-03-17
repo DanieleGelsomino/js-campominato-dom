@@ -10,20 +10,20 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
-h1,
-h2 {
-  font-family: "Press Start 2P", sans-serif;
-  color: rgb(63, 62, 62);
-}
-
 /* utilities */
-
-/* content */
 
 .container {
   max-height: 1700px;
   background-color: rgb(253, 242, 221);
   position: relative;
+}
+
+/* content */
+
+h1,
+h2 {
+  font-family: "Press Start 2P", sans-serif;
+  color: rgb(63, 62, 62);
 }
 
 img {
@@ -38,13 +38,21 @@ img {
   gap: 10px;
 }
 
+.subtitle {
+  line-height: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.7rem;
+  margin-bottom: 20px;
+}
+
 .levels {
   text-align: center;
 }
 
 button {
   border-radius: 20px;
-  margin: 10px 5px;
+  margin: 10px 8px;
   font-size: 0.9rem;
   border: transparent;
   background-color: rgb(69, 127, 159);
@@ -57,14 +65,7 @@ button:hover {
   outline: 2px solid rgb(69, 127, 159);
   outline-offset: 2px;
   color: lightgray;
-}
-
-.subtitle {
-  line-height: 25px;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 0.7rem;
-  margin-bottom: 20px;
+  transform: scale(1.2);
 }
 
 #grid {
@@ -92,7 +93,8 @@ button:hover {
   transform: translate(-50%, -50%);
 }
 
-#game-over-text {
+#game-over-text,
+#winner-text {
   width: 500px;
   height: 500px;
   font-size: 2.5rem;
@@ -125,15 +127,7 @@ button:hover {
 }
 
 #winner-text {
-  color: green;
-  width: 500px;
-  height: 500px;
-  font-size: 2.5rem;
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  animation: opacity 1.5s infinite 100ms;
+  color: rgb(0, 173, 0) !important;
 }
 
 @keyframes opacity {
@@ -158,6 +152,21 @@ button:hover {
   align-items: center;
 }
 
+.cell.hard {
+  width: calc(100% / 7);
+  height: calc(100% / 7);
+}
+
+.cell.medium {
+  width: calc(100% / 9);
+  height: calc(100% / 9);
+}
+
+.cell.easy {
+  width: calc(100% / 10);
+  height: calc(100% / 10);
+}
+
 .cell:hover {
   cursor: pointer;
   background-color: gray;
@@ -173,19 +182,4 @@ button:hover {
 
 .bg-red {
   background-color: tomato;
-}
-
-.cell.hard {
-  width: calc(100% / 7);
-  height: calc(100% / 7);
-}
-
-.cell.medium {
-  width: calc(100% / 9);
-  height: calc(100% / 9);
-}
-
-.cell.easy {
-  width: calc(100% / 10);
-  height: calc(100% / 10);
 }
