@@ -17,23 +17,18 @@ function startGame(totCells, levels) {
       // e la cella si colorerà di rosso, altrimenti di blu.
       const bombDetected = positionBomb.includes(i);
       if (bombDetected) {
-        let punteggio = 100 / (totCells - 16);
-        let playerPunteggio = (punteggio * click).toFixed(2);
-        console.log(playerPunteggio);
-        punteggioUser.innerHTML = `<h3>il tuo record : ${playerPunteggio} pt</h3>`;
         cell.classList.add("bg-red");
         gameOver.classList.remove("d-none");
         gameOverText.classList.remove("d-none");
       } else {
         click += 1;
-        console.log(click);
         let punteggio = 100 / (totCells - 16);
         let playerPunteggio = (punteggio * click).toFixed(2);
+        cell.classList.add("clicked");
         if (playerPunteggio > 99) {
           winnerGame.classList.remove("d-none");
           winnerText.classList.remove("d-none");
         }
-        console.log(playerPunteggio);
         punteggioUser.innerHTML = `<h3>il tuo record : ${playerPunteggio} pt</h3>`;
         cell.classList.add("bg-skyblue");
       }
@@ -64,6 +59,7 @@ function createElementsInGrid(totalCells, levelClass) {
   const grid = document.getElementById("grid");
   // resetto il contenuto della griglia
   grid.innerHTML = "";
+  gameOver.classList.add("d-none");
 
   // creo totalCells div all'interno della griglia
   for (let i = 0; i < totalCells; i++) {
@@ -84,6 +80,8 @@ function createElementsInGrid(totalCells, levelClass) {
 //************* / FUNZIONI ************
 
 // preparazione all'esecuzione del programma
+
+const bombs = 16;
 
 const buttonEasy = document.getElementById("easy");
 
